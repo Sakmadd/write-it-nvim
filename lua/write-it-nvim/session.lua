@@ -218,9 +218,9 @@ function Session:update_statusline()
     progress = Metrics.get_progress(self.current_index, #self.code)
   end
 
-  -- Set buffer-local statusline
-  vim.api.nvim_buf_set_option(self.bufnr, 'statusline',
-    string.format(' Write It: %d%% | %d WPM | %d%% acc',
+  -- Set buffer-local statusline (wrapped in pcall for test compatibility)
+  pcall(vim.api.nvim_buf_set_option, self.bufnr, 'statusline',
+    string.format(' Write It: %d%%%% | %d WPM | %d%%%% acc',
       progress, wpm, accuracy)
   )
 end
@@ -233,9 +233,9 @@ function Session:finish()
   local wpm = Metrics.calculate_wpm(self.start_time, #self.code)
   local accuracy = Metrics.calculate_accuracy(#self.code, self.errors)
 
-  -- Update statusline
-  vim.api.nvim_buf_set_option(self.bufnr, 'statusline',
-    string.format('✓ Write It: Complete | %d WPM | %d%% acc', wpm, accuracy)
+  -- Update statusline (wrapped in pcall for test compatibility)
+  pcall(vim.api.nvim_buf_set_option, self.bufnr, 'statusline',
+    string.format('✓ Write It: Complete | %d WPM | %d%%%% acc', wpm, accuracy)
   )
 
   -- Show notification
