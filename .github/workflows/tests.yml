@@ -16,6 +16,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
+      # Clear any cached luarocks/busted installations
+      - name: Clear luarocks cache
+        run: |
+          rm -rf ~/.luarocks
+          rm -rf .luarocks
+
       - name: Run tests
         uses: nvim-neorocks/nvim-busted-action@v1
         with:
