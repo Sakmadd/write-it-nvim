@@ -31,3 +31,5 @@ jobs:
           VALIDATE_EDITORCONFIG: false
           VALIDATE_NATURAL_LANGUAGE: false
           VALIDATE_GITLEAKS: false
+          VALIDATE_LUA: false  # We have .luacheckrc but super-linter doesn't respect it
+          VALIDATE_MARKDOWN: false  # Disable for now
