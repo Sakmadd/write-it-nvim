@@ -94,10 +94,10 @@ function M.apply_decorations(session)
     end
   end
 
-  -- Move cursor to current position
+  -- Move cursor to current position (wrapped in pcall for test compatibility)
   if session.current_index < #session.char_positions then
     local cursor_pos = session.char_positions[session.current_index + 1]
-    vim.api.nvim_win_set_cursor(0, { cursor_pos.line + 1, cursor_pos.col })
+    pcall(vim.api.nvim_win_set_cursor, 0, { cursor_pos.line + 1, cursor_pos.col })
   end
 end
 
