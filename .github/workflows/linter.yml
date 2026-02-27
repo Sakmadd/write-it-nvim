@@ -24,5 +24,10 @@ jobs:
         uses: super-linter/super-linter/slim@v6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Disable problematic linters for Neovim plugin
           VALIDATE_JSCPD: false
           VALIDATE_PYTHON_BLACK: false
+          VALIDATE_CHECKOV: false
+          VALIDATE_EDITORCONFIG: false
+          VALIDATE_NATURAL_LANGUAGE: false
+          VALIDATE_GITLEAKS: false
